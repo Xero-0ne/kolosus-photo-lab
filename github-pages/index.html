@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kyle Bloxam - technical support specialist, network administrator and operations professional.">
+  <meta name="theme-color" content="#eef2ef">
+  <title>Kyle Bloxam | Technical Support &amp; Network Operations</title>
+  <style>
+    :root {
+      --bg: #eef2ef;
+      --ink: #111716;
+      --muted: #56625e;
+      --line: rgba(17, 23, 22, .14);
+      --glass: rgba(249, 252, 249, .68);
+      --teal: #0d8583;
+      --teal-soft: #cae7df;
+      --amber: #c88a24;
+      --amber-soft: #f2dfb5;
+      --coral: #cb5c4c;
+      --coral-soft: #f1d1ca;
+      --blue: #457a9d;
+      --blue-soft: #d4e1eb;
+      --shadow: 0 24px 70px rgba(25, 45, 40, .12);
+    }
+    * { box-sizing: border-box; letter-spacing: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      background:
+        linear-gradient(rgba(13, 112, 111, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(13, 112, 111, .045) 1px, transparent 1px),
+        var(--bg);
+      background-size: 40px 40px;
+      color: var(--ink);
+      font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    ::selection { background: var(--amber-soft); }
+    .shell { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .progress { position: fixed; inset: 0 auto auto 0; z-index: 100; height: 3px; background: var(--coral); width: 0; }
+    .header {
+      position: fixed;
+      inset: 18px 24px auto;
+      z-index: 90;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 64px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(247, 250, 247, .78);
+      box-shadow: 0 16px 42px rgba(17, 35, 31, .09);
+      backdrop-filter: blur(20px) saturate(140%);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; width: fit-content; }
+    .mark { display: grid; width: 44px; aspect-ratio: 1; place-items: center; border-radius: 6px; background: var(--ink); color: white; font: 700 14px ui-monospace, monospace; }
+    .brand-copy { display: grid; line-height: 1.15; }
+    .brand-copy strong { font-size: 15px; }
+    .brand-copy small { margin-top: 4px; color: var(--muted); font: 11px ui-monospace, monospace; }
+    .nav { display: flex; gap: 4px; padding: 4px; border: 1px solid rgba(17, 23, 22, .09); border-radius: 7px; background: rgba(255, 255, 255, .46); }
+    .nav a { padding: 7px 11px; border-radius: 5px; color: #44504c; font-size: 14px; font-weight: 650; transition: 180ms ease; }
+    .nav a:hover, .nav a:focus-visible { background: white; color: var(--ink); outline: none; }
+    .nav .contact-link { background: var(--ink); color: white; }
+    .nav .contact-link:hover { background: var(--teal); color: white; }
+    .menu { display: none; justify-self: end; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 7px; background: rgba(255, 255, 255, .55); cursor: pointer; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(420px, .92fr); align-items: center; min-height: 760px; padding: 142px 0 72px; }
+    .hero-copy { position: relative; z-index: 2; max-width: 680px; }
+    .status { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 32px; padding: 7px 10px; border: 1px solid rgba(13, 133, 131, .25); border-radius: 6px; background: rgba(201, 230, 223, .45); color: #165b59; font: 650 12px ui-monospace, monospace; }
+    .status i { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 5px rgba(13, 133, 131, .12); animation: pulse 2.6s ease-in-out infinite; }
+    .eyebrow { margin: 0; color: var(--teal); font: 700 12px ui-monospace, monospace; text-transform: uppercase; }
+    h1 { margin: 12px 0 24px; font-size: 88px; font-weight: 680; line-height: .92; }
+    .lead { max-width: 640px; margin: 0; color: #3c4844; font-size: 21px; line-height: 1.55; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 17px; border: 1px solid var(--line); border-radius: 7px; background: rgba(255, 255, 255, .55); font-size: 15px; font-weight: 700; cursor: pointer; transition: 180ms ease; }
+    .button.primary { border-color: var(--ink); background: var(--ink); color: white; box-shadow: 0 10px 24px rgba(17, 23, 22, .18); }
+    .button:hover { transform: translateY(-2px); border-color: var(--teal); }
+    .button.primary:hover { background: var(--teal); border-color: var(--teal); }
+    .meta { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 28px; color: var(--muted); font-size: 14px; }
+    .meta span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--teal); }
+    .stage { position: relative; min-height: 510px; perspective: 1200px; }
+    .stage::before, .stage::after { position: absolute; content: ""; border: 1px solid rgba(17, 23, 22, .1); border-radius: 8px; background: rgba(255, 255, 255, .26); }
+    .stage::before { inset: 58px 30px 14px 66px; transform: rotate(5deg); }
+    .stage::after { inset: 34px 55px 34px 34px; transform: rotate(-3deg); }
+    .network-card { position: absolute; inset: 42px 12px 26px 42px; z-index: 2; display: grid; grid-template-rows: auto 1fr auto auto; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--glass); box-shadow: var(--shadow); backdrop-filter: blur(24px) saturate(135%); transform: rotateY(-5deg) rotateX(2deg); transition: 450ms cubic-bezier(.2, .8, .2, 1); }
+    .stage:hover .network-card { transform: rotateY(0) rotateX(0) translateY(-6px); }
+    .card-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px 16px; border-bottom: 1px solid rgba(17, 23, 22, .1); }
+    .card-head div { display: grid; }
+    .card-head small { color: var(--teal); font: 700 11px ui-monospace, monospace; text-transform: uppercase; }
+    .card-head strong { font-size: 19px; }
+    .active { display: inline-flex; align-items: center; gap: 7px; padding: 5px 8px; border-radius: 5px; background: rgba(201, 230, 223, .52); color: #16615f; font: 700 12px ui-monospace, monospace; }
+    .active i { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+    .map { position: relative; min-height: 248px; background: linear-gradient(rgba(13, 112, 111, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 112, 111, .08) 1px, transparent 1px); background-size: 28px 28px; }
+    .orbit { position: absolute; inset: 50% auto auto 50%; border: 1px dashed rgba(13, 112, 111, .22); border-radius: 50%; transform: translate(-50%, -50%); }
+    .orbit.a { width: 170px; height: 170px; }
+    .orbit.b { width: 270px; height: 220px; }
+    .core { position: absolute; inset: 50% auto auto 50%; z-index: 4; display: grid; width: 66px; height: 66px; place-items: center; border: 1px solid rgba(13, 112, 111, .28); border-radius: 8px; background: rgba(255, 255, 255, .85); box-shadow: 0 14px 30px rgba(13, 112, 111, .16); color: var(--teal); font: 700 11px ui-monospace, monospace; transform: translate(-50%, -50%); }
+    .node { position: absolute; z-index: 3; width: 10px; height: 10px; border: 2px solid white; border-radius: 50%; background: var(--teal); box-shadow: 0 3px 10px rgba(13, 112, 111, .3); transition: 180ms ease; }
+    .node:hover { transform: scale(1.8); }
+    .node:nth-of-type(3n) { background: var(--amber); }
+    .node:nth-of-type(7n) { background: var(--coral); }
+    .node:nth-of-type(1) { left: 12%; top: 18%; } .node:nth-of-type(2) { left: 23%; top: 28%; }
+    .node:nth-of-type(3) { left: 35%; top: 13%; } .node:nth-of-type(4) { left: 49%; top: 21%; }
+    .node:nth-of-type(5) { left: 64%; top: 15%; } .node:nth-of-type(6) { left: 78%; top: 26%; }
+    .node:nth-of-type(7) { left: 87%; top: 17%; } .node:nth-of-type(8) { left: 16%; top: 46%; }
+    .node:nth-of-type(9) { left: 29%; top: 53%; } .node:nth-of-type(10) { left: 42%; top: 42%; }
+    .node:nth-of-type(11) { left: 59%; top: 48%; } .node:nth-of-type(12) { left: 73%; top: 43%; }
+    .node:nth-of-type(13) { left: 88%; top: 54%; } .node:nth-of-type(14) { left: 9%; top: 73%; }
+    .node:nth-of-type(15) { left: 21%; top: 84%; } .node:nth-of-type(16) { left: 35%; top: 69%; }
+    .node:nth-of-type(17) { left: 48%; top: 82%; } .node:nth-of-type(18) { left: 63%; top: 72%; }
+    .node:nth-of-type(19) { left: 77%; top: 83%; } .node:nth-of-type(20) { left: 90%; top: 73%; }
+    .node:nth-of-type(21) { left: 25%; top: 11%; } .node:nth-of-type(22) { left: 69%; top: 61%; }
+    .node:nth-of-type(23) { left: 82%; top: 38%; } .node:nth-of-type(24) { left: 14%; top: 62%; }
+    .legend { display: flex; gap: 14px; padding: 13px 22px; border-top: 1px solid rgba(17, 23, 22, .08); color: var(--muted); font-size: 11px; }
+    .legend span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--teal); }
+    .legend span:nth-child(2)::before { background: var(--amber); } .legend span:nth-child(3)::before { background: var(--coral); }
+    .uptime { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 15px 22px 19px; font-size: 12px; }
+    .bar { height: 5px; overflow: hidden; border-radius: 3px; background: #d8dfdb; }
+    .bar i { display: block; width: 98%; height: 100%; background: var(--teal); }
+    .uptime strong { color: var(--teal); font-family: ui-monospace, monospace; }
+    .metrics-band { border-block: 1px solid var(--line); background: rgba(17, 23, 22, .95); color: white; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .metric { display: grid; padding: 24px 30px; border-right: 1px solid rgba(255, 255, 255, .12); }
+    .metric:first-child { border-left: 1px solid rgba(255, 255, 255, .12); }
+    .metric strong { font-size: 30px; line-height: 1.15; }
+    .metric span { color: #afbbb6; font-size: 13px; }
+    .section { padding-block: 104px; }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .65fr); align-items: end; gap: 64px; margin-bottom: 48px; }
+    h2 { margin: 10px 0 0; font-size: 48px; font-weight: 650; line-height: 1.06; }
+    .section-head > p, .skills-intro > p:last-child { margin: 0; color: #4e5a56; font-size: 18px; line-height: 1.7; }
+    .strengths { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .strength { min-height: 250px; padding: 22px; border: 1px solid var(--line); border-top: 3px solid var(--tone); border-radius: 8px; background: var(--glass); box-shadow: 0 14px 35px rgba(17, 35, 31, .06); backdrop-filter: blur(16px); transition: 220ms ease; }
+    .strength:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(17, 35, 31, .1); }
+    .strength:nth-child(1) { --tone: var(--teal); --soft: var(--teal-soft); }
+    .strength:nth-child(2) { --tone: var(--amber); --soft: var(--amber-soft); }
+    .strength:nth-child(3) { --tone: var(--coral); --soft: var(--coral-soft); }
+    .strength:nth-child(4) { --tone: var(--blue); --soft: var(--blue-soft); }
+    .badge { display: grid; width: 43px; height: 43px; place-items: center; border-radius: 6px; background: var(--soft); color: var(--tone); font: 800 13px ui-monospace, monospace; }
+    .strength h3 { margin: 28px 0 10px; font-size: 19px; }
+    .strength p { margin: 0; color: #53605b; font-size: 15px; }
+    .tinted { border-block: 1px solid rgba(17, 23, 22, .1); background: rgba(246, 248, 245, .72); backdrop-filter: blur(14px); }
+    .timeline { border-top: 1px solid rgba(17, 23, 22, .18); }
+    details { border-bottom: 1px solid var(--line); }
+    summary { display: grid; grid-template-columns: 48px 1.2fr .7fr auto 38px; align-items: center; gap: 20px; min-height: 104px; padding: 18px 0; cursor: pointer; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    .num { color: var(--teal); font: 13px ui-monospace, monospace; }
+    .job { display: grid; }
+    .job strong { font-size: 22px; text-transform: uppercase; }
+    .job small { color: var(--muted); font-size: 15px; font-style: italic; }
+    .place, .period { color: var(--muted); font-size: 14px; }
+    .period { font-family: ui-monospace, monospace; }
+    .toggle { display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid var(--line); border-radius: 6px; background: rgba(255, 255, 255, .48); transition: 180ms ease; }
+    details[open] .toggle { transform: rotate(45deg); background: var(--teal-soft); }
+    .detail { display: grid; grid-template-columns: 1fr 1.55fr; gap: 50px; padding: 4px 58px 36px 68px; }
+    .summary-copy { margin: 0; color: #31403b; font-size: 18px; }
+    .detail ul { display: grid; gap: 11px; margin: 0; padding: 0; list-style: none; }
+    .detail li { position: relative; padding-left: 19px; color: #4f5b57; font-size: 15px; }
+    .detail li::before { position: absolute; left: 0; top: 10px; width: 7px; height: 2px; content: ""; background: var(--teal); }
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .project { min-height: 310px; padding: 26px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255, 255, 255, .58); box-shadow: 0 16px 40px rgba(17, 35, 31, .06); transition: 220ms ease; }
+    .project:hover { transform: translateY(-5px); border-color: rgba(13, 133, 131, .36); }
+    .project-top { display: flex; justify-content: space-between; color: var(--teal); font: 700 13px ui-monospace, monospace; }
+    .project h3 { margin: 58px 0 12px; font-size: 25px; }
+    .project p { margin: 0; color: #53605b; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 24px; }
+    .tags span, .skill-tags span { padding: 5px 8px; border: 1px solid rgba(17, 23, 22, .11); border-radius: 5px; background: rgba(255, 255, 255, .46); color: #4f5b57; font: 11px ui-monospace, monospace; }
+    .skills { display: grid; grid-template-columns: .72fr 1.28fr; gap: 90px; align-items: start; }
+    .skills-intro { position: sticky; top: 120px; }
+    .skills-intro h2 { margin-bottom: 22px; }
+    .skill-list { border-top: 1px solid var(--line); }
+    .skill-row { display: grid; grid-template-columns: 118px 1fr; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .skill-row h3 { margin: 2px 0 0; font-size: 15px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 60px; }
+    .panel { min-height: 260px; padding: 28px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255, 255, 255, .58); }
+    .panel-label { color: var(--teal); font: 700 12px ui-monospace, monospace; text-transform: uppercase; }
+    .panel ul { display: grid; gap: 14px; margin: 24px 0 0; padding: 0; list-style: none; }
+    .panel li::before { content: "+"; margin-right: 10px; color: var(--teal); font-weight: 800; }
+    .remote { background: var(--ink); color: white; }
+    .remote .panel-label { color: #8fd4cb; }
+    .remote > p { margin: 24px 0 0; font-size: 23px; line-height: 1.35; }
+    .ready { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 20px; margin-top: 28px; color: #bcc7c2; font-size: 13px; }
+    .ready span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--amber); }
+    .contact { padding-block: 92px; }
+    .contact-panel { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 48px; padding: 52px; border: 1px solid var(--line); border-radius: 8px; background: linear-gradient(115deg, rgba(255, 255, 255, .83), rgba(201, 230, 223, .46)); box-shadow: var(--shadow); backdrop-filter: blur(24px); }
+    .contact-panel h2 { max-width: 760px; }
+    .contact-actions { display: flex; gap: 9px; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 26px 0 34px; border-top: 1px solid var(--line); color: #68736f; font-size: 13px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgba(13, 133, 131, .02); } }
+    @media (max-width: 1000px) {
+      .header { grid-template-columns: 1fr auto; }
+      .nav { display: none; }
+      .nav.open { position: absolute; top: 70px; right: 0; display: grid; width: 220px; padding: 10px; border: 1px solid var(--line); background: rgba(247, 250, 247, .97); box-shadow: var(--shadow); }
+      .menu { display: block; }
+      .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 150px; }
+      h1 { font-size: 72px; }
+      .stage { width: min(640px, 100%); min-height: 460px; margin-inline: auto; }
+      .strengths { grid-template-columns: repeat(2, 1fr); }
+      summary { grid-template-columns: 42px 1fr auto 38px; }
+      .place { display: none; }
+      .detail { grid-template-columns: 1fr; gap: 22px; padding-left: 62px; }
+      .skills { grid-template-columns: 1fr; gap: 44px; }
+      .skills-intro { position: static; }
+      .contact-panel { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .shell { width: min(100% - 28px, 1160px); }
+      .header { inset: 10px 14px auto; min-height: 58px; }
+      .brand-copy small { display: none; }
+      .mark { width: 40px; }
+      .hero { min-height: auto; padding: 122px 0 48px; }
+      h1 { font-size: 52px; }
+      .lead { font-size: 18px; }
+      .actions { flex-direction: column; }
+      .button { width: 100%; }
+      .meta { display: grid; gap: 10px; }
+      .stage { min-height: 390px; }
+      .network-card { inset: 32px 0 20px; transform: none; }
+      .stage::before { inset: 48px 8px 6px 34px; }
+      .stage::after { inset: 24px 24px 22px 14px; }
+      .map { min-height: 205px; }
+      .legend { gap: 8px; padding-inline: 14px; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .metric { padding: 21px 16px; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+      .metric:nth-child(2n) { border-right: 0; }
+      .section { padding-block: 76px; }
+      .section-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 36px; }
+      h2 { font-size: 36px; }
+      .section-head > p, .skills-intro > p:last-child { font-size: 16px; }
+      .strengths, .projects, .credentials { grid-template-columns: 1fr; }
+      .strength { min-height: auto; }
+      summary { grid-template-columns: 34px 1fr 34px; gap: 12px; }
+      .period { grid-column: 2; font-size: 12px; }
+      .toggle { grid-column: 3; grid-row: 1 / span 2; width: 32px; height: 32px; }
+      .job strong { font-size: 18px; }
+      .detail { padding: 4px 6px 30px 46px; }
+      .skill-row { grid-template-columns: 1fr; gap: 10px; }
+      .ready { grid-template-columns: 1fr; }
+      .contact { padding-block: 60px; }
+      .contact-panel { padding: 28px 22px; }
+      .contact-actions { flex-direction: column; }
+      footer { flex-direction: column; gap: 4px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    @media print { .header, .progress, .actions, .contact { display: none !important; } body { background: white; } .hero { min-height: auto; padding-top: 30px; } .section { padding-block: 34px; } }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <header class="header">
+    <a class="brand" href="#top" aria-label="Kyle Bloxam, back to top"><span class="mark">KB</span><span class="brand-copy"><strong>Kyle Bloxam</strong><small>Network / Support / Sales</small></span></a>
+    <nav class="nav" id="nav" aria-label="Primary navigation">
+      <a href="#profile">Profile</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a class="contact-link" href="mailto:xeroone000@gmail.com">Contact</a>
+    </nav>
+    <button class="menu" id="menu" type="button" aria-label="Open navigation" aria-expanded="false">+</button>
+  </header>
+
+  <main>
+    <section class="hero shell" id="top">
+      <div class="hero-copy">
+        <div class="status"><i></i> Available for remote opportunities</div>
+        <p class="eyebrow">Network operations / Technical support</p>
+        <h1>Kyle<br>Bloxam</h1>
+        <p class="lead">I keep distributed technical systems online and make complex faults understandable to the people who need to act.</p>
+        <div class="actions"><a class="button primary" href="Kyle_Bloxam_CV.pdf" download>Download CV</a><a class="button" href="mailto:xeroone000@gmail.com">Email Kyle</a></div>
+        <div class="meta"><span>Krugersdorp, South Africa</span><span>GMT+2 / Remote-ready</span></div>
+      </div>
+      <div class="stage" aria-label="Operational footprint: 24 sites across three provinces">
+        <div class="network-card">
+          <div class="card-head"><div><small>Operational footprint</small><strong>Network overview</strong></div><span class="active"><i></i> Active</span></div>
+          <div class="map"><div class="orbit a"></div><div class="orbit b"></div><div class="core">CORE</div>
+            <i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i>
+            <i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i>
+            <i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i>
+          </div>
+          <div class="legend"><span>Gauteng</span><span>KwaZulu-Natal</span><span>Western Cape</span></div>
+          <div class="uptime"><span>Fleet availability</span><div class="bar"><i></i></div><strong>98%+</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics-band"><div class="metrics shell"><div class="metric"><strong>4,000</strong><span>networked devices</span></div><div class="metric"><strong>24</strong><span>active sites</span></div><div class="metric"><strong>98%+</strong><span>fleet availability</span></div><div class="metric"><strong>1-2h</strong><span>critical response</span></div></div></section>
+
+    <section class="section shell" id="profile">
+      <div class="section-head"><div><p class="eyebrow">01 / Profile</p><h2>Technical depth.<br>Commercial clarity.</h2></div><p>A hands-on technical support specialist and network administrator with frontline sales experience, practical leadership and a builder's instinct for automation.</p></div>
+      <div class="strengths">
+        <article class="strength"><span class="badge">NW</span><h3>Network operations</h3><p>MikroTik routing, managed switching, VLANs, static addressing, PoE and point-to-point wireless.</p></article>
+        <article class="strength"><span class="badge">SD</span><h3>Service delivery</h3><p>SLA ownership, technician dispatch, ticket triage, escalation paths and 24/7 critical support.</p></article>
+        <article class="strength"><span class="badge">SS</span><h3>Security systems</h3><p>Hikvision IP camera estates, HikCentral, recording servers, access control and power resilience.</p></article>
+        <article class="strength"><span class="badge">AI</span><h3>AI and automation</h3><p>Python reporting, workflow automation, AI-assisted diagnosis and a deployed internal chatbot agent.</p></article>
+      </div>
+    </section>
+
+    <section class="section tinted" id="experience"><div class="shell">
+      <div class="section-head"><div><p class="eyebrow">02 / Experience</p><h2>Built through ownership.</h2></div><p>From production leadership and sales to multi-site technical operations.</p></div>
+      <div class="timeline">
+        <details open><summary><span class="num">01</span><span class="job"><strong>Archetor</strong><small>CCTV Administrator</small></span><span class="place">Centurion, Gauteng</span><span class="period">2023 - Present</span><span class="toggle">+</span></summary><div class="detail"><p class="summary-copy">Owns the day-to-day reliability of a distributed security and access-control estate spanning three provinces.</p><ul><li>Administers approximately 4,000 IP cameras and access-control infrastructure across 24 residential estates.</li><li>Maintains MikroTik routing, managed switching, VLANs, static addressing and wireless links.</li><li>Coordinates technicians, triages faults and delivers new estates into live monitoring.</li><li>Owns a contractual SLA with 1-2 hour critical response and 24/7 standby cover.</li><li>Reports service performance and remediation directly to senior client leadership.</li><li>Automates internal reporting and fault tracking with Python and AI tooling.</li></ul></div></details>
+        <details><summary><span class="num">02</span><span class="job"><strong>Nova Life</strong><small>Outbound Sales Consultant</small></span><span class="place">Gauteng</span><span class="period">2022 - 2023</span><span class="toggle">+</span></summary><div class="detail"><p class="summary-copy">Built calm, persuasive phone communication through a high-volume, full-cycle telephonic sales role.</p><ul><li>Worked approximately 200 outbound calls per day.</li><li>Qualified prospects, presented products, handled objections and closed sales end to end.</li></ul></div></details>
+        <details><summary><span class="num">03</span><span class="job"><strong>Dynamic Distributors</strong><small>Production Supervisor</small></span><span class="place">Gauteng</span><span class="period">2015 - 2021</span><span class="toggle">+</span></summary><div class="detail"><p class="summary-copy">Led a production team through daily output targets, assembly quality and packaging operations.</p><ul><li>Supervised a team of 9-12 producing PVC electrical supplies.</li><li>Held accountability for daily output and quality control across a six-year tenure.</li></ul></div></details>
+        <details><summary><span class="num">04</span><span class="job"><strong>Look &amp; Listen</strong><small>Retail Sales Assistant</small></span><span class="place">Gauteng</span><span class="period">2013 - 2014</span><span class="toggle">+</span></summary><div class="detail"><p class="summary-copy">Delivered floor sales and customer support in a specialist retail environment.</p></div></details>
+      </div>
+    </div></section>
+
+    <section class="section shell" id="projects">
+      <div class="section-head"><div><p class="eyebrow">03 / Technical projects</p><h2>Learning by building.</h2></div><p>Independent projects that turn curiosity into working software.</p></div>
+      <div class="projects">
+        <article class="project"><div class="project-top"><span>01</span><span>AI</span></div><h3>Internal AI agent</h3><p>Built a company chatbot and agent on the open-source Odysseus framework.</p><div class="tags"><span>AI agents</span><span>Internal tooling</span><span>Deployment</span></div></article>
+        <article class="project"><div class="project-top"><span>02</span><span>GAME</span></div><h3>Independent game development</h3><p>Three years building a multiplayer Godot game single-handedly, including all artwork.</p><div class="tags"><span>Godot</span><span>Multiplayer</span><span>Digital art</span></div></article>
+        <article class="project"><div class="project-top"><span>03</span><span>AUDIO</span></div><h3>Audio software</h3><p>Designs and refines guitar amplifier simulations and audio plugins with a view to release.</p><div class="tags"><span>Audio plugins</span><span>Simulation</span><span>Prototyping</span></div></article>
+        <article class="project"><div class="project-top"><span>04</span><span>CODE</span></div><h3>Developer tooling</h3><p>Creates browser-based image and game-asset tools plus Python reporting automation.</p><div class="tags"><span>Python</span><span>Web tools</span><span>Automation</span></div></article>
+      </div>
+    </section>
+
+    <section class="section tinted" id="skills"><div class="shell">
+      <div class="skills"><div class="skills-intro"><p class="eyebrow">04 / Skills and credentials</p><h2>Useful across the whole incident.</h2><p>Kyle can trace a problem from endpoint to network to power, then coordinate the fix and explain the outcome clearly.</p></div>
+        <div class="skill-list">
+          <div class="skill-row"><h3>Networks</h3><div class="skill-tags"><span>MikroTik</span><span>VLANs</span><span>Managed switching</span><span>Subnetting</span><span>PoE</span><span>Wireless links</span></div></div>
+          <div class="skill-row"><h3>Systems</h3><div class="skill-tags"><span>Hikvision CCTV</span><span>HikCentral VMS</span><span>Recording servers</span><span>Access control</span><span>UPS backup</span></div></div>
+          <div class="skill-row"><h3>Operations</h3><div class="skill-tags"><span>Freshdesk</span><span>SLA management</span><span>Fault isolation</span><span>Vendor escalation</span><span>Team coordination</span></div></div>
+          <div class="skill-row"><h3>Build</h3><div class="skill-tags"><span>Python</span><span>AI workflows</span><span>Godot</span><span>Browser tools</span><span>Audio software</span></div></div>
+        </div>
+      </div>
+      <div class="credentials"><article class="panel"><span class="panel-label">Credentials</span><ul><li>Hikvision Certified Training</li><li>PSIRA Registered, Grades E, D and C</li><li>National Senior Certificate</li><li>Continuously self-taught in networking and software development</li></ul></article><article class="panel remote"><span class="panel-label">Remote readiness</span><p>Available for a fixed 09:00-17:00 GMT-8 shift.</p><div class="ready"><span>Dedicated quiet office</span><span>High-speed fibre</span><span>UPS power backup</span><span>After-hours experienced</span></div></article></div>
+    </div></section>
+
+    <section class="contact shell" id="contact"><div class="contact-panel"><div><p class="eyebrow">Start a conversation</p><h2>Need someone who can own the problem end to end?</h2></div><div class="contact-actions"><a class="button primary" href="mailto:xeroone000@gmail.com">Email Kyle</a><button class="button" id="copy" type="button">Copy email</button></div></div></section>
+  </main>
+  <footer class="shell"><span>Kyle Bloxam / Technical Support &amp; Network Operations</span><span>Krugersdorp, Gauteng, South Africa</span></footer>
+  <span class="sr-only" id="notice" role="status" aria-live="polite"></span>
+  <script>
+    const progress = document.getElementById('progress');
+    const menu = document.getElementById('menu');
+    const nav = document.getElementById('nav');
+    const copy = document.getElementById('copy');
+    const notice = document.getElementById('notice');
+    const updateProgress = () => {
+      const available = document.documentElement.scrollHeight - innerHeight;
+      progress.style.width = (available > 0 ? scrollY / available * 100 : 0) + '%';
+    };
+    addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+    menu.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menu.setAttribute('aria-expanded', String(open));
+      menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      menu.textContent = open ? 'x' : '+';
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menu.setAttribute('aria-expanded', 'false');
+      menu.textContent = '+';
+    }));
+    copy.addEventListener('click', async () => {
+      await navigator.clipboard.writeText('xeroone000@gmail.com');
+      copy.textContent = 'Copied';
+      notice.textContent = 'Email address copied.';
+      setTimeout(() => { copy.textContent = 'Copy email'; notice.textContent = ''; }, 1800);
+    });
+  </script>
+</body>
+</html>

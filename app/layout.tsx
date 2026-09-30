@@ -13,9 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Kyle Bloxam | Technical Support & Network Operations',
+  title: 'KOLØSUS PHOTO LAB',
   description:
-    'Technical support specialist and network administrator experienced in multi-site operations, CCTV infrastructure, sales and AI automation.',
+    'A browser-local analog photo processor for KOLØSUS carousel images.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
